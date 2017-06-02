@@ -2,18 +2,18 @@ package com.khursheed.trialtask.model;
 
 public class Response {
 	
-	private String iamUserId;
+	private long iamUserId;
 	private String email;
 	private String tenantId;
 	private String errorDescription;
 	private String errorDetail;
 	
 	
-	public String getIamUserId() {
+	public long getIamUserId() {
 		return iamUserId;
 	}
-	public void setIamUserId(String iamUserId) {
-		this.iamUserId = iamUserId;
+	public void setIamUserId(long l) {
+		this.iamUserId = l;
 	}
 	public String getEmail() {
 		return email;

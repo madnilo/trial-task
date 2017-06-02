@@ -3,6 +3,11 @@ package com.khursheed.trialtask.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -11,17 +16,25 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class Federated {
 
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	private String email;
 	private String federatedUserId;
 	private String tenantId;
 	private String status;
 	private String role;
-	private List<String> banlist;
+	
+	private String[] banlist;
+	
+	@OneToMany
 	private List<Features> features;
-	private List<String> businessSOC;
-	private List<String> DIDline;
-	private List<String> extensions;
-	private List<String> desklines;
+	
+	private String[] businessSOC;
+	private String[] didLine;
+	private String[] extensions;
+	private String[] desklines;
+	
+	@OneToOne
 	private LogoImage logoImage;
 	
 	
@@ -56,10 +69,10 @@ public class Federated {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public List<String> getBanlist() {
+	public String[] getBanlist() {
 		return banlist;
 	}
-	public void setBanlist(List<String> banlist) {
+	public void setBanlist(String[] banlist) {
 		this.banlist = banlist;
 	}
 	public List<Features> getFeatures() {
@@ -68,28 +81,28 @@ public class Federated {
 	public void setFeatures(List<Features> features) {
 		this.features = features;
 	}
-	public List<String> getBusinessSOC() {
+	public String[] getBusinessSOC() {
 		return businessSOC;
 	}
-	public void setBusinessSOC(List<String> businessSOC) {
+	public void setBusinessSOC(String[] businessSOC) {
 		this.businessSOC = businessSOC;
 	}
-	public List<String> getDIDline() {
-		return DIDline;
+	public String[] getDIDline() {
+		return didLine;
 	}
-	public void setDIDline(List<String> dIDline) {
-		DIDline = dIDline;
+	public void setDIDline(String[] dIDline) {
+		didLine = dIDline;
 	}
-	public List<String> getExtensions() {
+	public String[] getExtensions() {
 		return extensions;
 	}
-	public void setExtensions(List<String> extensions) {
+	public void setExtensions(String[] extensions) {
 		this.extensions = extensions;
 	}
-	public List<String> getDesklines() {
+	public String[] getDesklines() {
 		return desklines;
 	}
-	public void setDesklines(List<String> desklines) {
+	public void setDesklines(String[] desklines) {
 		this.desklines = desklines;
 	}
 	public LogoImage getLogoImage() {
@@ -97,6 +110,12 @@ public class Federated {
 	}
 	public void setLogoImage(LogoImage logoImage) {
 		this.logoImage = logoImage;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	
